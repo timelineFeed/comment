@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package comment.v1;
+
+import "google/api/annotations.proto";
+
+option go_package = "comment/api/comment/v1;v1";
+
+service Comment{
+  rpc Create (CreateRequest) returns (CreateReply) {};
+  rpc GetComment (GetCommentRequest) returns (GetCommentReply) {};
+  rpc Like (LikeCommentRequest) returns (LikeCommentReply) {};
+}
+
+message CreateRequest{
+  uint64 item_id = 1;
+  uint64 parent_id = 2;
+  string content = 3;
+}
+message CreateReply{}
+
+message GetCommentRequest{
+  uint64 item_id = 1;
+  uint64 offset = 2;
+  uint64 size = 3;
+}
+message GetCommentReply{
+  repeated CommentList comment = 1;
+}
+
+message LikeCommentRequest{
+  uint64 id = 1;
+}
+message LikeCommentReply{}
+
+message CommentDetail {
+  uint64 id = 1;
+  string content = 2;
+  uint64 like = 3;
+  uint32 floor_number = 4;
+  uint64 parent_id = 5;
+}
+
+message CommentList {
+  repeated CommentDetail comment = 1;
+}
+

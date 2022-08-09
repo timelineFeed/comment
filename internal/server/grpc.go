@@ -1,7 +1,7 @@
 package server
 
 import (
-	v1 "comment/api/helloworld/v1"
+	v1 "comment/api/comment/v1"
 	"comment/internal/conf"
 	"comment/internal/service"
 	"github.com/go-kratos/kratos/v2/log"
